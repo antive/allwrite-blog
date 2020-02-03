@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 // Components & Views
-import Navbar from "./components/Navbar"
+import Navigation from "./components/Navigation"
 import Home from "./views/Home"
 import Login from "./views/Login"
 import Creator from "./views/Creator"
@@ -10,11 +10,11 @@ import Creator from "./views/Creator"
 const App = () => (
 	<React.Fragment>
 		<Router>
-			<Navbar />
+			<Navigation />
 			<Switch>
-				<Route path='/' component={Home} />
-				<Route exact path='/login' component={Login} />
-				<Route exact path='/creator' component={Creator} />
+				<Route exact path='/' component={Home} />
+				<Route path='/login' component={Login} />
+				<Route path='/creator' component={Creator} />
 			</Switch>
 		</Router>
 	</React.Fragment>
