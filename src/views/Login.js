@@ -1,10 +1,16 @@
 import React from "react"
+import { Container } from "reactstrap"
+
+import LoginForm from "../components/LoginForm"
 
 class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Hello, u need to login yo</h1>
+				<Container>
+					<h1>Hello, u need to login yo</h1>
+					<LoginForm />
+				</Container>
 			</div>
 		)
 	}
