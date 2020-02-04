@@ -9,13 +9,22 @@ import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import { composeWithDevTools } from "redux-devtools-extension"
 import rootReducer from "./reducers"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect
+} from "react-router-dom"
 
 // Components & Views
 import Navigation from "./components/Navigation"
+import Loader from "./components/Loader"
+import Authenticated from "./components/Authenticated"
 import Home from "./views/Home"
 import Login from "./views/Login"
 import Creator from "./views/Creator"
+import NoteDetail from "./components/NoteDetail"
+import NoteEdit from "./components/NoteEdit"
 
 const store = createStore(
 	rootReducer,
