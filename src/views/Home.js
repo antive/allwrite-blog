@@ -3,11 +3,15 @@ import { Container, Row, Col } from "reactstrap"
 
 import Post from "../components/Post"
 
-const Home = () => (
+const Home = (props) => (
 	<Container>
 		<Row>
 			<Col xs='6'>
-				<Post title='Hei!' lead='Noe tekst her tenker jeg!' description="Jaja, så var det jul i år også!" />
+				<Post
+					title='Hei!'
+					lead='Noe tekst her tenker jeg!'
+					description='Jaja, så var det jul i år også!'
+				/>
 			</Col>
 			<Col xs='6'>
 				<Post />
