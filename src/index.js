@@ -1,8 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./index.css"
-import App from "./App"
+import "./styles/index.css"
 import * as serviceWorker from "./serviceWorker"
 import { createStore, applyMiddleware } from "redux"
 import { Provider } from "react-redux"
@@ -23,8 +22,6 @@ import Authenticated from "./components/Authenticated"
 import Home from "./views/Home"
 import Login from "./views/Login"
 import Creator from "./views/Creator"
-import NoteDetail from "./components/NoteDetail"
-import NoteEdit from "./components/NoteEdit"
 
 const store = createStore(
 	rootReducer,
@@ -32,24 +29,13 @@ const store = createStore(
 )
 
 ReactDOM.render(
-	<Provider store={store}>
-		<Router>
-			<Loader>
-				<React.Fragment>
-					<Switch>
-						<Route exact path='/login' component={Login} />
-						<Redirect from='/logout' to='/login' />
-						<Authenticated>
-							<Header />
-							<Route path='/:id/edit' component={NoteEdit} exact />
-							<Route path='/:id' component={NoteDetail} exact />
-							<Route exact path='/' component={App} />
-						</Authenticated>
-					</Switch>
-				</React.Fragment>
-			</Loader>
-		</Router>
-	</Provider>,
+	<Router>
+		<Navigation />
+		<Switch>
+			<Route exact path='/' component={Home} />
+			<Route path='/creator' component={Creator} />
+		</Switch>
+	</Router>,
 	document.getElementById("root")
 )
 
