@@ -27,7 +27,7 @@ class Home extends React.Component {
 	renderNotes() {
 		return _.map(this.state.posts, (post, key) => {
 			return (
-				<Col key={key}>
+				<Col xs='6' key={key}>
 					<Post title={post.title} body={post.body} />
 				</Col>
 			)
@@ -36,7 +36,7 @@ class Home extends React.Component {
 
 	render() {
 		return (
-			<Container>
+			<Container style={{ paddingTop: "70px" }}>
 				<Row>{this.renderNotes()}</Row>
 			</Container>
 		)

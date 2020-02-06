@@ -1,27 +1,27 @@
-import { GET_NOTES, NOTES_STATUS } from "../actionTypes"
+import { GET_POSTS, POSTS_STATUS } from "../actionTypes"
 import { database } from "../database/firebase"
 
-export function getNotes() {
+export function getPosts() {
 	return (dispatch) => {
 		dispatch({
-			type: NOTES_STATUS,
+			type: POSTS_STATUS,
 			payload: true
 		})
 		database.on(
 			"value",
 			(snapshot) => {
 				dispatch({
-					type: GET_NOTES,
+					type: GET_POSTS,
 					payload: snapshot.val()
 				})
 				dispatch({
-					type: NOTES_STATUS,
+					type: POSTS_STATUS,
 					payload: false
 				})
 			},
 			() => {
 				dispatch({
-					type: NOTES_STATUS,
+					type: POSTS_STATUS,
 					payload: -1
 				})
 			}
@@ -29,22 +29,22 @@ export function getNotes() {
 	}
 }
 
-export function saveNote(note) {
-	return (dispatch) => database.push(note)
+export function savePost(post) {
+	return (dispatch) => database.push(post)
 }
 
-export function editNote(id, note) {
-	return (dispatch) => database.child(id).update(note)
+export function editPost(id, post) {
+	return (dispatch) => database.child(id).update(post)
 }
 
-export function deleteNote(id) {
+export function deletePost(id) {
 	return (dispatch) => database.child(id).remove()
 }
 
-export function saveComment(noteId, comment) {
+export function saveComment(postId, comment) {
 	return (dispatch) => {
 		database
-			.child(noteId)
+			.child(postId)
 			.child("comments")
 			.push(comment)
 	}

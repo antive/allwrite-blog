@@ -4,7 +4,7 @@ import { Jumbotron, Button } from "reactstrap"
 const Post = (props) => (
 	<div>
 		<Jumbotron>
-			<h1 className='display-4'>{props.title}</h1>
+			<h1 className='display-4 text-info'>{props.title}</h1>
 			<hr className='my-2' />
 			<p>{props.body}</p>
 			<p className='lead'>

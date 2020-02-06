@@ -2,28 +2,28 @@ import React, { Component } from "react"
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { getUser } from "../actions/userAction"
-import { getNotes } from "../actions/notesAction"
+import { getPosts } from "../actions/postAction"
 
 class Loader extends Component {
 	componentWillMount() {
-		const { userLoading, notesLoading } = this.props
+		const { userLoading, postsLoading } = this.props
 		if (userLoading === undefined) {
 			this.props.getUser()
 		}
-		if (notesLoading === undefined) {
-			this.props.getNotes()
+		if (postsLoading === undefined) {
+			this.props.getPosts()
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.notesLoading === -1 && nextProps.user !== null) {
-			this.props.getNotes()
+		if (nextProps.postsLoading === -1 && nextProps.user !== null) {
+			this.props.getPosts()
 		}
 	}
 
 	render() {
-		const { userLoading, notesLoading, children } = this.props
-		if ((!userLoading && !notesLoading) || this.props.user === null) {
+		const { userLoading, postsLoading, children } = this.props
+		if ((!userLoading && !postsLoading) || this.props.user === null) {
 			return <div>{children}</div>
 		} else {
 			return (
@@ -38,9 +38,9 @@ class Loader extends Component {
 const mapStateToProps = (state) => ({
 	user: state.user,
 	userLoading: state.loading.user,
-	notesLoading: state.loading.notes
+	postsLoading: state.loading.posts
 })
 
 export default withRouter(
-	connect(mapStateToProps, { getUser, getNotes })(Loader)
+	connect(mapStateToProps, { getUser, getPosts })(Loader)
 )

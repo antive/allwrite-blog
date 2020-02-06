@@ -34,6 +34,7 @@ ReactDOM.render(
 		<Switch>
 			<Route exact path='/' component={Home} />
 			<Route path='/creator' component={Creator} />
+			<Route path='/login' component={Login} />
 		</Switch>
 	</Router>,
 	document.getElementById("root")

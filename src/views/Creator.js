@@ -44,12 +44,14 @@ class Creator extends React.Component {
 
 	render() {
 		return (
-			<Container>
+			<Container style={{ paddingTop: "70px" }}>
 				<Row>
 					<Col>
 						<Form onSubmit={this.handleSubmit}>
-							<h1 className='display-4'>Ny bloggpost</h1>
-							<FormGroup>
+							<FormGroup row>
+								<h1 className='display-4'>Ny bloggpost</h1>
+							</FormGroup>
+							<FormGroup row>
 								<Label for='postTitle'>Tittel</Label>
 								<Input
 									type='text'
@@ -61,7 +63,7 @@ class Creator extends React.Component {
 									value={this.state.title}
 								/>
 							</FormGroup>
-							<FormGroup>
+							<FormGroup row>
 								<Label for='bodyText'>Beskrivelse/blog</Label>
 								<Input
 									type='textarea'
@@ -73,7 +75,7 @@ class Creator extends React.Component {
 									value={this.state.body}
 								/>
 							</FormGroup>
-							<FormGroup>
+							<FormGroup row>
 								<Label for='imageFile'>Bildefil</Label>
 								<Input type='file' name='file' id='imageFile' />
 								<FormText color='muted'>

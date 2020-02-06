@@ -1,10 +1,10 @@
 import { combineReducers } from "redux"
-import notesReducer from "./notesReducer"
+import postReducer from "./postReducer"
 import userReducer from "./userReducer"
 import loadingReducer from "../reducers/loadingReducer"
 
 const rootReducer = combineReducers({
-	notes: notesReducer,
+	post: postReducer,
 	user: userReducer,
 	loading: loadingReducer
 })
