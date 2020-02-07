@@ -1,5 +1,7 @@
 import React from "react"
 import { database } from "../database/firebase"
+import { connect } from "react-redux"
+import { savePost } from "../actions/postAction"
 import {
 	Container,
 	Row,
@@ -35,7 +37,7 @@ class Creator extends React.Component {
 			title: this.state.title,
 			body: this.state.body
 		}
-		database.push(post)
+		this.props.savePost(post)
 		this.setState({
 			title: "",
 			body: ""
@@ -91,4 +93,10 @@ class Creator extends React.Component {
 	}
 }
 
-export default Creator
+function mapStateToProps(state, ownProps) {
+	return {
+		posts: state.posts
+	}
+}
+
+export default connect(mapStateToProps, { savePost })(Creator)

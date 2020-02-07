@@ -1,6 +1,7 @@
 import React from "react"
-import { database } from "../database/firebase"
 import _ from "lodash"
+import { connect } from "react-redux"
+import { getPosts } from "../actions/postAction"
 import { Container, Row, Col, Jumbotron, Button } from "reactstrap"
 
 import Post from "../components/Post"
@@ -17,15 +18,11 @@ class Home extends React.Component {
 	}
 
 	componentDidMount() {
-		database.on("value", (snapshot) => {
-			this.setState({
-				posts: snapshot.val()
-			})
-		})
+		this.props.getPosts()
 	}
 
 	renderNotes() {
-		return _.map(this.state.posts, (post, key) => {
+		return _.map(this.props.posts, (post, key) => {
 			return (
 				<Col xs='6' key={key}>
 					<Post title={post.title} body={post.body} />
@@ -43,4 +40,10 @@ class Home extends React.Component {
 	}
 }
 
-export default Home
+function mapStateToProps(state, ownProps) {
+	return {
+		posts: state.posts
+	}
+}
+
+export default connect(mapStateToProps, { getPosts })(Home)

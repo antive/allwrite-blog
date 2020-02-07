@@ -29,14 +29,16 @@ const store = createStore(
 )
 
 ReactDOM.render(
-	<Router>
-		<Navigation />
-		<Switch>
-			<Route exact path='/' component={Home} />
-			<Route path='/creator' component={Creator} />
-			<Route path='/login' component={Login} />
-		</Switch>
-	</Router>,
+	<Provider store={store}>
+		<Router>
+			<Navigation />
+			<Switch>
+				<Route exact path='/' component={Home} />
+				<Route path='/creator' component={Creator} />
+				<Route path='/login' component={Login} />
+			</Switch>
+		</Router>
+	</Provider>,
 	document.getElementById("root")
 )
 
